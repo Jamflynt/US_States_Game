@@ -16,10 +16,7 @@ while len(correct_answers) < 50:
                                     prompt="What's another state name?").title()
 
     if answer_state == "Exit":
-        missing_states = []
-        for state in state_list:
-            if state not in correct_answers:
-                missing_states.append(state)
+        missing_states = [state for state in state_list if state not in correct_answers]
         new_data = pandas.DataFrame(missing_states)
         new_data.to_csv("states_to_learn.csv")
         break
